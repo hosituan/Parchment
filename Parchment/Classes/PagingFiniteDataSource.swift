@@ -7,10 +7,10 @@ class PagingFiniteDataSource: PagingViewControllerInfiniteDataSource {
 
     func pagingViewController(_: PagingViewController, viewControllerFor pagingItem: PagingItem) -> UIViewController {
         guard let index = items.firstIndex(where: { $0.isEqual(to: pagingItem) }) else {
-            fatalError("pagingViewController:viewControllerFor: PagingItem does not exist")
+            return UIViewController()
         }
         guard let viewController = viewControllerForIndex?(index) else {
-            fatalError("pagingViewController:viewControllerFor: No view controller exist for PagingItem")
+            return UIViewController()
         }
 
         return viewController
